@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Maze Solver Visualization</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>AI Maze Solver Visualization</h1>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label for="maze-size">Maze Size:</label>
+                <select id="maze-size">
+                    <option value="10">10x10</option>
+                    <option value="15" selected>15x15</option>
+                    <option value="20">20x20</option>
+                    <option value="25">25x25</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label for="algorithm">Algorithm:</label>
+                <select id="algorithm">
+                    <option value="bfs">Breadth-First Search (BFS)</option>
+                    <option value="dfs">Depth-First Search (DFS)</option>
+                    <option value="astar">A* Algorithm</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label for="speed">Speed:</label>
+                <select id="speed">
+                    <option value="slow">Slow</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="fast">Fast</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="button-container">
+            <button id="generate-maze">Generate Maze</button>
+            <button id="solve-maze" disabled>Solve Maze</button>
+        </div>
+        
+        <div id="status" class="status-message"></div>
+        
+        <div id="maze-container">
+            <div id="maze"></div>
+        </div>
+        
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color start"></div>
+                <span>Start</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color end"></div>
+                <span>End</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color wall"></div>
+                <span>Wall</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color path"></div>
+                <span>Path</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color visiting"></div>
+                <span>Visiting</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color frontier"></div>
+                <span>Frontier</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color solution"></div>
+                <span>Solution</span>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
