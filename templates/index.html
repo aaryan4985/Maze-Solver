@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Maze Solver Visualization</title>
+    <title>AI Maze Solver </title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>AI Maze Solver Visualization</h1>
+        <h1>AI Maze Solver</h1>
         
         <div class="controls">
             <div class="control-group">
@@ -84,6 +84,80 @@
         </div>
     </div>
     
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Maze Solver</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Maze Solver</h1>
+            <p class="subtitle">Generate, visualize, and solve mazes with AI algorithms!</p>
+        </header>
+
+        <section class="controls">
+            <div class="control-group">
+                <label for="maze-size">Maze Size:</label>
+                <select id="maze-size">
+                    <option value="10">10 x 10</option>
+                    <option value="15" selected>15 x 15</option>
+                    <option value="20">20 x 20</option>
+                    <option value="25">25 x 25</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="algorithm">Algorithm:</label>
+                <select id="algorithm">
+                    <option value="bfs">Breadth-First Search (BFS)</option>
+                    <option value="dfs">Depth-First Search (DFS)</option>
+                    <option value="astar">A* Search Algorithm</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="speed">Speed:</label>
+                <select id="speed">
+                    <option value="slow">Slow</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="fast">Fast</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="button-container">
+            <button id="generate-maze">🎲 Generate Maze</button>
+            <button id="solve-maze" disabled>🚀 Solve Maze</button>
+        </section>
+
+        <div id="status" class="status-message"></div>
+
+        <section id="maze-container">
+            <div id="maze"></div>
+        </section>
+
+        <section class="legend">
+            <h2>Legend</h2>
+            <div class="legend-items">
+                <div class="legend-item"><div class="legend-color start"></div><span>Start</span></div>
+                <div class="legend-item"><div class="legend-color end"></div><span>End</span></div>
+                <div class="legend-item"><div class="legend-color wall"></div><span>Wall</span></div>
+                <div class="legend-item"><div class="legend-color path"></div><span>Path</span></div>
+                <div class="legend-item"><div class="legend-color visiting"></div><span>Visiting</span></div>
+                <div class="legend-item"><div class="legend-color frontier"></div><span>Frontier</span></div>
+                <div class="legend-item"><div class="legend-color solution"></div><span>Solution</span></div>
+            </div>
+        </section>
+    </div>
+
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
