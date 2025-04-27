@@ -4,6 +4,8 @@ body {
     margin: 0;
     padding: 0;
     color: #333;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
@@ -16,6 +18,8 @@ body {
 h1 {
     margin-bottom: 30px;
     color: #2c3e50;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
 }
 
 .controls {
@@ -35,15 +39,23 @@ h1 {
 label {
     font-weight: 600;
     margin-bottom: 5px;
+    font-size: 1rem;
 }
 
 select {
-    padding: 8px 12px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
     background-color: white;
-    min-width: 150px;
+    min-width: 160px;
     font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+select:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    outline: none;
 }
 
 .button-container {
@@ -51,20 +63,23 @@ select {
     display: flex;
     justify-content: center;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 button {
-    padding: 10px 20px;
+    padding: 12px 24px;
     font-size: 16px;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.1s;
+    transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s;
     font-weight: 600;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 button:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.15);
 }
 
 button:active {
@@ -93,13 +108,15 @@ button:disabled {
     background-color: #bdc3c7;
     cursor: not-allowed;
     transform: none;
+    box-shadow: none;
 }
 
 .status-message {
-    height: 20px;
-    margin: 10px 0;
+    height: 24px;
+    margin: 12px 0;
     font-weight: 600;
     color: #2c3e50;
+    font-size: 1rem;
 }
 
 #maze-container {
@@ -110,10 +127,12 @@ button:disabled {
 
 #maze {
     display: grid;
-    gap: 1px;
+    gap: 2px;
     border: 2px solid #34495e;
     background-color: #34495e;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 8px;
 }
 
 .cell {
@@ -123,7 +142,7 @@ button:disabled {
     align-items: center;
     justify-content: center;
     font-size: 10px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .wall {
@@ -175,13 +194,14 @@ button:disabled {
 .legend-item {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 8px;
+    font-size: 0.9rem;
 }
 
 .legend-color {
-    width: 20px;
-    height: 20px;
-    border-radius: 3px;
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
 }
 
 /* Legend colors */
@@ -225,6 +245,10 @@ button:disabled {
         flex-direction: column;
         align-items: center;
     }
+
+    h1 {
+        font-size: 2rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -236,5 +260,13 @@ button:disabled {
     .button-container {
         flex-direction: column;
         align-items: center;
+    }
+
+    select {
+        min-width: 140px;
+    }
+
+    h1 {
+        font-size: 1.7rem;
     }
 }
